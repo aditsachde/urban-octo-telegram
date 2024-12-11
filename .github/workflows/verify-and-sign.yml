@@ -49,6 +49,7 @@ jobs:
         run: |
           docker pull $UPSTREAM
           docker tag $UPSTREAM $TAG
+          docker push $TAG
 
       # Step 5: Setup authentication keys
       - uses: 'google-github-actions/auth@v2'
@@ -68,8 +69,3 @@ jobs:
             -a dev.cosignproject.cosign/sigalg=ECDSA_P256_SHA256 \
             -a dev.cosignproject.cosign/pub=$PUB \
             $TAG
-
-      # Step 7: Push the image
-      - name: Push Image
-        run: |
-          docker push $TAG
