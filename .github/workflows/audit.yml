@@ -1,0 +1,20 @@
+name: Audit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # needed for signing the images with GitHub OIDC Token
+
+    steps:
+      - uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: 'projects/450917619389/locations/global/workloadIdentityPools/github-actions-pool/providers/github-provider'
+
+      - run: |
+          gcloud compute addresses list
