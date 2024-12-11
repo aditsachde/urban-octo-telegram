@@ -17,4 +17,5 @@ jobs:
           workload_identity_provider: 'projects/450917619389/locations/global/workloadIdentityPools/github-actions-pool/providers/github-provider'
 
       - run: |
+          gcloud config set project urban-octo-telegram
           gcloud compute addresses list
