@@ -38,6 +38,9 @@ jobs:
       - name: Verify Image with Cosign
         run: |
           gh attestation verify oci://ghcr.io/aditsachde/confidential-witness@sha256:$DIGEST --repo aditsachde/confidential-witness
+        env:
+          GH_TOKEN: ${{ github.token }}
+
 
       # Step 4: Tag the image
       - name: Tag Image
